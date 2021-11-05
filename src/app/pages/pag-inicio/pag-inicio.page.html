@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="end" color="danger" routerLink="/home">
+      <ion-icon name="exit-outline"></ion-icon>
+    </ion-button>
+    <ion-title class="ion-padding-top ion-padding-text-center">
+
+      <ion-label>
+        <h2>RegistrApp</h2>
+      </ion-label>
+
+    </ion-title>
+  </ion-toolbar>
+  <ion-item>
+    <h1 class="a">Bienvenido {{dato}}</h1>
+  </ion-item>
+
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="asistir">
+        <ion-label>Asistir</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="asistencia">
+        <ion-label>Asistencia</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-router-outlet>
+
+  </ion-router-outlet>
+
+
+
+
+</ion-content>
