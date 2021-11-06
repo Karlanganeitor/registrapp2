@@ -44,6 +44,10 @@ const routes: Routes = [
     path: 'cs',
     loadChildren: () => import('./components/asistencia/cursos/cs/cs.module').then( m => m.CSPageModule)
   },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
   
 ];
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { ApiclientService } from 'src/app/services/apliclient.service';
 import { BdlocalService } from 'src/app/services/bdlocal.service';
 
 @Component({
@@ -12,7 +13,16 @@ export class HomePage implements OnInit {
     dato:string;
     nombre:string;
     nro:string;
-  constructor(public bdLocal:BdlocalService,public toastController: ToastController, private router: Router) { }
+    user:any;
+    users:any;
+    posts:any;
+    post:any={
+      id:null,
+      nombra:"",
+      contra:"",
+      userId:null
+    };
+  constructor(private api: ApiclientService, public bdLocal:BdlocalService,public toastController: ToastController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -38,6 +48,16 @@ export class HomePage implements OnInit {
   }
   guarda(){
     this.bdLocal.guardarContactos(this.nombre,this.nro);
+  }
+  ionViewWillEnter(){
+    this.getUsuario();
+  }
+  getUsuario(){
+    this.api.getUsuarios().subscribe((data)=>{
+      this.users=data;
+    }
+    
+    )
   }
 
 }
