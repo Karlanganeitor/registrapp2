@@ -1,17 +1,17 @@
 <p>
   <ion-card class ="ion-text-center">
     <ion-card-title>
-     <ion-tab-button (click)="openCamera()">
-       <ion-icon name="camera"></ion-icon>
-       <ion-label>Photo</ion-label>
-       <img src="assets/img/QR.png" alt="">
-     </ion-tab-button>
+     <ion-button (click)="scan()">
+       Escanear QR
+     </ion-button>
+     {{code}}
     </ion-card-title>
     <ion-card-content>
        
 
 
     </ion-card-content>
-    <ion-button expand="block" (click)="tomar()" >Tomar foto</ion-button>
+   
   </ion-card>
 </p>
+

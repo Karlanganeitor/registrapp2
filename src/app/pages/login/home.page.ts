@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { ApiclientService } from 'src/app/services/apliclient.service';
+import { APIClientService } from 'src/app/services/apiclient.service';
 import { BdlocalService } from 'src/app/services/bdlocal.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
       contra:"",
       userId:null
     };
-  constructor(private api: ApiclientService, public bdLocal:BdlocalService,public toastController: ToastController, private router: Router) { }
+  constructor(private api: APIClientService, public bdLocal:BdlocalService,public toastController: ToastController, private router: Router) { }
 
   ngOnInit() {
   }

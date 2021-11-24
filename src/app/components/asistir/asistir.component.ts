@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 @Component({
   selector: 'app-asistir',
@@ -7,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AsistirComponent implements OnInit {
 
-  constructor() { }
+    code:any;
+  constructor(private barcodeScanner: BarcodeScanner) { }
 
   ngOnInit() {}
+  scan(){
+
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+      this.code = barcodeData.text;
+      console.log('Barcode data', this.code)
+     }).catch(err => {
+         console.log('Error', err);
+     });
+
+  }
 
 }
