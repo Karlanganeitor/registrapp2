@@ -1,17 +1,24 @@
 <p>
-  <ion-card class ="ion-text-center">
+  <ion-card class="ion-text-center">
     <ion-card-title>
-     <ion-button (click)="scan()">
-       Escanear QR
-     </ion-button>
-     {{code}}
+      <ion-button (click)="scan()">
+        Escanear QR
+      </ion-button>
+      <ion-card>
+        {{code}}
+      </ion-card>
+      <ion-card>
+        <ion-button full (click)="enviarMensj" href="mailto:gascarlos13@gmail.com?cc=gascarlos13@gmail.com&amp;subject=the%20subject%20of%20email&amp;body={{code}}">
+          Enviar Mensaje
+        </ion-button>
+      </ion-card>
+      
     </ion-card-title>
     <ion-card-content>
-       
+
 
 
     </ion-card-content>
-   
+
   </ion-card>
 </p>
-

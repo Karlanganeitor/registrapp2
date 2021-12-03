@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     HttpClientModule,
   ],
   providers: [
+    
     BarcodeScanner,
+    EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

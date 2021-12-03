@@ -3,7 +3,8 @@ import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { APIClientService } from 'src/app/services/apiclient.service';
 import { BdlocalService } from 'src/app/services/bdlocal.service';
-
+import {FormGroup,FormControl,Validators,FormBuilder} from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -15,6 +16,7 @@ export class HomePage implements OnInit {
     nro:string;
     user:any;
     users:any;
+    formularioLogin: FormGroup;
     posts:any;
     post:any={
       id:null,
