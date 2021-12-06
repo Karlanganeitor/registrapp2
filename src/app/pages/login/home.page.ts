@@ -25,9 +25,9 @@ export class HomePage implements OnInit {
 
 
       //declaro e instancio un elemnto de tipo navigationExtras
-      let navigationExtras: NavigationExtras = {
-        state: { dato: this.dato } //al state le asigno el parametro que deseo enviar
-      }
+      let navigationExtras: NavigationExtras ={
+        state:{dato: this.dato} //al state le asigno el parametro que deseo enviar
+      };
       //usar api enrutador para llamar a la siguiente pagina // le digo al enrutador que vaya una pagina pero le asigno un parametro
       this.router.navigate(['/pag-inicio'], navigationExtras);
 

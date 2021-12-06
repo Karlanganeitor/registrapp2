@@ -8,9 +8,13 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./pag-inicio.page.scss'],
 })
 export class PagInicioPage implements OnInit {
-dato:any;
+
+dato: any;
+
   constructor(private activeRoute: ActivatedRoute, private router: Router,public toastController: ToastController) {
-    this.router.navigate(['pag-inicio/asistir'])
+    this.router.navigate(['pag-inicio/asistir']);
+
+
     this.activeRoute.queryParams.subscribe(params=>{//utilizo lambda
       if(this.router.getCurrentNavigation().extras.state){
         this.dato=this.router.getCurrentNavigation().extras.state.dato; //dato es el parametro que recivo desde siguiente
@@ -25,10 +29,6 @@ dato:any;
    }
 
 
-   tomar(){
-    //llamar al toast
-    this.presentToast('Hola ');
-  }
 
 
   presentToast(arg0: string) {
