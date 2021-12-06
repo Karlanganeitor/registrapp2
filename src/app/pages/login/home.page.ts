@@ -3,7 +3,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { APIClientService } from 'src/app/services/apiclient.service';
 import { BdlocalService } from 'src/app/services/bdlocal.service';
-import {FormGroup,FormControl,Validators,FormBuilder} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-home',
@@ -11,55 +11,55 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-    dato:string;
-    nombre:string;
-    nro:string;
-    user:any;
-    users:any;
-    formularioLogin: FormGroup;
-    posts:any;
-    post:any={
-      id:null,
-      nombra:"",
-      contra:"",
-      userId:null
-    };
-  constructor(private api: APIClientService, public bdLocal:BdlocalService,public toastController: ToastController, private router: Router) { }
+  dato: string = '';
+  nombre: string;
+  nro: string = '';
+
+  constructor(private api: APIClientService, public bdLocal: BdlocalService, public toastController: ToastController, private router: Router, public alertController: AlertController) { }
 
   ngOnInit() {
   }
-  saludar(){
-    //llamar al toast
-    this.presentToast('Hola '+this.dato);
-  }
 
-  siguiente (){
-    //declaro e instancio un elemnto de tipo navigationExtras
-    let navigationExtras: NavigationExtras ={
-      state:{dato: this.dato} //al state le asigno el parametro que deseo enviar
+  siguiente() {
+    if (this.dato != "" && this.nro != "") {
+
+
+      //declaro e instancio un elemnto de tipo navigationExtras
+      let navigationExtras: NavigationExtras = {
+        state: { dato: this.dato } //al state le asigno el parametro que deseo enviar
+      }
+      //usar api enrutador para llamar a la siguiente pagina // le digo al enrutador que vaya una pagina pero le asigno un parametro
+      this.router.navigate(['/pag-inicio'], navigationExtras);
+
+      this.bdLocal.guardarContactos(this.nombre, this.nro);
+
+      //llamar al toast
+      this.presentToast('Hola ' + this.dato);
+
+    } else {
+      this.presentAlert("Error de ingreso", "Usuario y/o contraseña no ingresados")
     }
-    //usar api enrutador para llamar a la siguiente pagina // le digo al enrutador que vaya una pagina pero le asigno un parametro
-    this.router.navigate(['/pag-inicio'], navigationExtras);
+
   }
-  async presentToast(msg:string) {
+  async presentToast(msg: string) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 2000
     });
     toast.present();
   }
-  guarda(){
-    this.bdLocal.guardarContactos(this.nombre,this.nro);
+
+
+
+  async presentAlert(title: string, msg: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: title,
+      message: msg,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
-  ionViewWillEnter(){
-    this.getUsuario();
-  }
-  getUsuario(){
-    this.api.getUsuarios().subscribe((data)=>{
-      this.users=data;
-    }
-    
-    )
-  }
+
 
 }

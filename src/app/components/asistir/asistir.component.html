@@ -1,6 +1,12 @@
 <p>
   <ion-card class="ion-text-center">
     <ion-card-title>
+      <ion-card>
+      <ion-select placeholder="Seleccione usuario" [(ngModel)]="user">
+        <ion-select-option *ngFor="let usu of users" [value]="usu">{{usu.name}}</ion-select-option>
+      </ion-select>
+    </ion-card>
+
       <ion-button (click)="scan()">
         Escanear QR
       </ion-button>
@@ -8,7 +14,7 @@
         {{code}}
       </ion-card>
       <ion-card>
-        <ion-button full (click)="enviarMensj" href="mailto:gascarlos13@gmail.com?cc=gascarlos13@gmail.com&amp;subject=the%20subject%20of%20email&amp;body={{code}}">
+        <ion-button full  href="mailto:gascarlos13@gmail.com?cc=gascarlos13@gmail.com&amp;subject=the%20subject%20of%20email&amp;body={{code}}">
           Enviar Mensaje
         </ion-button>
       </ion-card>

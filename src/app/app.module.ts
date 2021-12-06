@@ -16,17 +16,17 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, 
+  imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot(), 
+    IonicStorageModule.forRoot(),
     HttpClientModule,
   ],
   providers: [
-    
+
     BarcodeScanner,
     EmailComposer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
