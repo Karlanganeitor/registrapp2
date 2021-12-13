@@ -10,11 +10,6 @@ describe('Mi Prueba', ()=>{
     it("La Login se muestra por defecto",()=>{
         expect(element(by.buttonText("Iniciar Sesion")).getText()).toContain("Iniciar Sesion");
     });
-    //test2 
-    //*t("El usuario puede navegar a la pagina de inicio",async()=>{
-       // await  element(by.css("[login=pag-inicio]")).click();
-        //browser.driver.sleep(500);
-        //expect(element(by.buttonText("Iniciar Sesion")).getText()).toContain("Iniciar Sesion");
-    //})
+   
 
 });
